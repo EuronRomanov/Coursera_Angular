@@ -1,4 +1,4 @@
-(function(){
+/*(function(){
 	'use strict';
 
 	var app=angular.module('ShoppingListCheckOff',[]);
@@ -13,11 +13,9 @@
 		var ctrl1=this;
 		ctrl1.Message="Everything is bought!";
 
-		//try{
+		
 			ctrl1.ToBuy=ShoppingListCheckOffService.getLista();
-		/*}catch(error){
-			ctrl1.Message=error.message;
-		}*/
+		
 		
 		ctrl1.pro="";
 		ctrl1.quan="";
@@ -37,7 +35,7 @@
 
 		ctrl2.Message="Nothing bought yet";
 
-		//try{
+	
 
 			
 
@@ -46,9 +44,7 @@
 				
 			
 			
-		/*}catch(error){
-          ctrl2.Message=error.message;
-		}*/
+		
 	}
 
 	function ShoppingListCheckOffService() {
@@ -87,17 +83,13 @@
          };
 
          service.getLista=function(){
-         	/*if (lista.length==0) {
-         	throw new Error("Everything is bought!");
-         	}*/
+         	
 
          	return lista;
          };
 
          service.getbought=function () {
-         	/*if (bought.length<1) {
-         	throw new Error("Nothing bought yet");
-         	}*/
+         	
 
          	return bought;
          };
@@ -105,4 +97,8 @@
 
 	}
 
-})();
+})();*/
+
+
+
+!function(){"use strict";var t=angular.module("ShoppingListCheckOff",[]);function e(t){var e=this;e.Message="Everything is bought!",e.ToBuy=t.getLista(),e.pro="",e.quan="",e.toBuy=function(n,i,o){var u=t.getElement(n);e.pro=u.name,e.quan=u.quantity,t.addItem(i,o),t.removeItem(n)}}function n(t){this.Message="Nothing bought yet",this.Bought=t.getbought()}t.controller("ToBuyController",e),t.controller("AlreadyBoughtController",n),t.service("ShoppingListCheckOffService",function(){var t=[{name:"cookies",quantity:10},{name:"milk",quantity:12},{name:"rice",quantity:100},{name:"butter",quantity:243},{name:"soap",quantity:1}],e=[];this.addItem=function(t,n){var i={name:t,quantity:n};e.push(i)},this.removeItem=function(e){t.splice(e,1)},this.getElement=function(e){return t[e]},this.getLista=function(){return t},this.getbought=function(){return e}}),e.$inject=["ShoppingListCheckOffService"],n.$inject=["ShoppingListCheckOffService"]}();
