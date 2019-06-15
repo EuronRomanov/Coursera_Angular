@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="ShoppingListCheckOff">
+<head >
+	<title>Store</title>
+	<meta charset="utf-8">
+	 <meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<script   type="text/javascript" src="angular.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+	<script defer type="text/javascript" src="bootstrap.min.js"></script> 
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">  
+</head>
+<body>
+	<div class="row">
+<div ng-controller="ToBuyController as list1" class="col-md-6">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Producto y Cantidad</th>
+				<th scope="col"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="j in list1.ToBuy">
+				<th scope="row">{{$index+1}}</th>
+				<td>Buy {{j.quantity}} {{j.name}} </td>
+				<td><input type="submit" value="Bought" ng-click="list1.toBuy($index,j.name,j.quantity)" class="btn btn-primary"> <td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="alert alert-info" role="alert" ng-if="list1.ToBuy.length<1" >
+ {{list1.Message}}
+</div>
+</div>
+<div ng-controller="AlreadyBoughtController as list2" class="col-md-6">
+	
+<div >
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Producto y Cantidad</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="i in list2.Bought">
+				<th scope="row">{{$index+1}}</th>
+				<td>Bought {{i.quantity}} {{i.name}} </td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="alert alert-info" role="alert" ng-if="list2.Bought.length<1" >
+ {{list2.Message}}
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
